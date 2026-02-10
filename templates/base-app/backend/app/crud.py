@@ -21,6 +21,9 @@ def get_users(db: SessionDep) -> list[User]:
     users = db.scalars(select(User)).all()
     return users
 
+
+# TODO: make update user functions (including partial updates?)
+
 def delete_user(db: SessionDep, user_id: int) -> ():
     db_user = db.query(User).filter(User.id == user_id).first()
     db.delete(db_user)
